@@ -2,32 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+::-webkit-scrollbar {
+    overflow: hidden;
+    width: 3px;
+    height: 0px;
+    background-color: transparent;
+    box-shadow: inset;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar-button {
+    background-color: transparent;
+    height: 0px;
+    width: 0px;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+    width: 0px;
+    height: 0px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+    width: 2px;
+    border-radius: 20px;
+}
+
+/* ::-webkit-scrollbar-track {
+    background-color: rgb(0, 0, 0);
+    width: 0px;
+    border-radius: 0px 20px 20px 0px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    width: 0px;
+} */
+
+
+@keyframes pop-up {
+    from {
+        transform: scale(.8) translateY(100px);
+        opacity: 20%;
+        filter: blur(64px);
+    }
+
+    to {
+        transform: scale(1) translateY(0px);
+        opacity: 100%;
+        filter: blur(0px);
+
+    }
+}
+
+.animate-this-div * {
+    scroll-behavior: smooth;
+    animation: pop-up;
+    animation-duration: 0.1s;
+}
+
+@keyframes opacity-animate {
+    from {
+        transform: translateY(-40px);
+        opacity: 20%;
+        filter: blur(64px)
+    }
+
+    to {
+        transform: translateY(0px);
+        opacity: 100%;
+        ilter: blur(0px)
+    }
+}
+
+.opacity-animate-this-div {
+    scroll-behavior: smooth;
+    animation: opacity-animate;
+    animation-duration: 0.2s;
 }
